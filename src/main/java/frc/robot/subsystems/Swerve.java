@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.sensors.Pigeon2;
+import com.ctre.phoenix6.hardware.Pigeon2;
+import com.ctre.phoenix.motorcontrol.can.BaseTalonConfiguration;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -14,7 +15,7 @@ import frc.constants.RobotConstants;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.littletonrobotics.junction.Logger;
+// import org.littletonrobotics.junction.Logger;
 
 
 public class Swerve extends SubsystemBase {
@@ -27,7 +28,7 @@ public class Swerve extends SubsystemBase {
 
 	public Swerve() {
 		gyro = new Pigeon2(RobotConstants.Swerve.pigeonID);
-		gyro.configFactoryDefault();
+		// gyro.getConfigurator().apply(new TalonFXConfiguration()); //add configFactoryDefault
 		zeroGyro();
 
 		frontLeft = new SwerveModule(RobotConstants.Swerve.frontLeftModule.constants);
@@ -42,7 +43,7 @@ public class Swerve extends SubsystemBase {
 
 	/* Used by SwerveControllerCommand in Auto */
 	public void setModuleStates(SwerveModuleState[] desiredStates) {
-		Logger.getInstance().recordOutput("Swerve Auto Input", desiredStates);
+		// Logger.getInstance().recordOutput("Swerve Auto Input", desiredStates);
 		SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, RobotConstants.Swerve.maxSpeed);
 
 		for (int i = 0; i < SwerveModules.size(); i++) {
@@ -79,7 +80,7 @@ public class Swerve extends SubsystemBase {
 	}
 
 	public Rotation2d getYaw() {
-		return Rotation2d.fromDegrees(gyro.getYaw());
+		return Rotation2d.fromDegrees(gyro.getYaw().getValueAsDouble()); //changed
 	}
 
 	public void calibrateModules() {
@@ -124,8 +125,8 @@ public class Swerve extends SubsystemBase {
 	@Override
 	public void periodic() {
 		swerveOdometry.update(getYaw(), getModulePositions());
-		Logger.getInstance().recordOutput("Swerve Status", getModuleStates());
-		Logger.getInstance().recordOutput("Swerve Poses", getPose());
+		// Logger.getInstance().recordOutput("Swerve Status", getModuleStates());
+		// Logger.getInstance().recordOutput("Swerve Poses", getPose());
 		for (SwerveModule swerveModule : SwerveModules) {
 			SmartDashboard.putNumber("Integrated " + swerveModule.getModuleID(),
 					swerveModule.getAngle().getDegrees());

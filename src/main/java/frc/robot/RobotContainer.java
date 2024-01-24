@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.constants.RobotConstants;
-import frc.robot.auto.exampleAuto;
+// import frc.robot.auto.exampleAuto;
 import frc.robot.commands.TeleOpSwerve;
-import frc.robot.subsystems.Arm;
+// import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Swerve;
 
 public class RobotContainer {
@@ -36,7 +36,7 @@ public class RobotContainer {
 	public final JoystickButton driverY = new JoystickButton(armJoystick,4);
 	public final JoystickButton driverA = new JoystickButton(armJoystick,1);
 	public final Swerve swerve = new Swerve();
-	public final Arm arm = new Arm();
+	// public final Arm arm = new Arm();
 
 
 	public RobotContainer() {
@@ -52,20 +52,20 @@ public class RobotContainer {
 		driverY.onTrue(new SequentialCommandGroup(new InstantCommand(()->RobotConstants.Swerve.maxSpeed=2), new InstantCommand(()->RobotConstants.Swerve.maxAngularVelocity=1.2)));
 		driverA.onTrue(new SequentialCommandGroup(new InstantCommand(()->RobotConstants.Swerve.maxSpeed=1), new InstantCommand(()->RobotConstants.Swerve.maxAngularVelocity=2.3)));
 		//Arm Button Controls
-		armA.onTrue(new InstantCommand(()->arm.setPos(RobotConstants.arm.ARM_Place_Low_Auto)));
- 		armY.onTrue(new InstantCommand(()->arm.setPos(RobotConstants.arm.ARM_Place_High_Auto)));
-		zeroGyro.onTrue(new InstantCommand(swerve::zeroGyro));
-		calibrate.onTrue(new SequentialCommandGroup(new InstantCommand(swerve::calibrateModules), new InstantCommand(arm::calibrate)));
-		Five.onTrue(new InstantCommand(()->arm.activateIntake(true)));
-		Six.onTrue(new InstantCommand(()->arm.activateIntake(false)));
+		// armA.onTrue(new InstantCommand(()->arm.setPos(RobotConstants.arm.ARM_Place_Low_Auto)));
+ 		// armY.onTrue(new InstantCommand(()->arm.setPos(RobotConstants.arm.ARM_Place_High_Auto)));
+		// zeroGyro.onTrue(new InstantCommand(swerve::zeroGyro));
+		// calibrate.onTrue(new SequentialCommandGroup(new InstantCommand(swerve::calibrateModules), new InstantCommand(arm::calibrate)));
+		// Five.onTrue(new InstantCommand(()->arm.activateIntake(true)));
+		// Six.onTrue(new InstantCommand(()->arm.activateIntake(false)));
 
 //		resetEncoder.onTrue(new InstantCommand(swerve::resetEncoders));
 	}
 
 	
-	public Command getAutonomousCommand() {
-		return new exampleAuto(this);
-	}
+	// public Command getAutonomousCommand() {
+	// 	return new exampleAuto(this);
+	// }
 
 	public double getSpeed(){
 		return (armJoystick.getRawAxis(2)-armJoystick.getRawAxis(3))*0.5;

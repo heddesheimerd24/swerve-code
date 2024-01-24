@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
+// import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
@@ -11,12 +11,12 @@ import frc.constants.SwerveModuleConstants;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkMaxPIDController;
-import com.revrobotics.CANSparkMax.ControlType;
+import com.revrobotics.SparkPIDController;
+import com.revrobotics.CANSparkBase.ControlType;
 import frc.constants.*;
 import frc.util.CANSparkMaxUtil;
 
-import static java.lang.Thread.sleep;
+// import static java.lang.Thread.sleep;
 
 public class SwerveModule {
 
@@ -24,8 +24,8 @@ public class SwerveModule {
 	public double cmdAngle;
 	private final RelativeEncoder driveIntegratedEncoder;
 	private final DutyCycleEncoder angleAbsEncoder;
-	private final SparkMaxPIDController driveController;
-	private final SparkMaxPIDController angleController;
+	private final SparkPIDController driveController;
+	private final SparkPIDController angleController;
 	private final SwerveModuleConstants moduleConstants;
 
 	private final CANSparkMax angleMotor;
@@ -149,7 +149,7 @@ public class SwerveModule {
 		driveController.setD(RobotConstants.Swerve.driveKD);
 		driveController.setFF(RobotConstants.Swerve.driveKFF);
 		driveMotor.enableVoltageCompensation(RobotConstants.Swerve.voltageComp);
-		final SwerveDriveOdometry thing;
+		// final SwerveDriveOdometry thing;
 		driveMotor.burnFlash();
 //		driveIntegratedEncoder.setPosition(0.0);
 	}
