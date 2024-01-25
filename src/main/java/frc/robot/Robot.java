@@ -30,19 +30,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		// Logger.getInstance().recordMetadata("ProjectName", "SwerveReimagined"); // Set a metadata value
-
-		// if (isReal()) {
-		// 	Logger.getInstance().addDataReceiver(new WPILOGWriter("C:/Users/micha/work/school/Robotics/FRC/logs")); // Log to a USB stick
-			// Logger.getInstance().addDataReceiver(new NT4Publisher()); // Publish data to NetworkTables
-		// 	new PowerDistribution(1, PowerDistribution.ModuleType.kRev); // Enables power distribution logging
-		// } else {
-		// 	setUseTiming(false); // Run as fast as possible
-		// 	String logPath = "C:/Users/micha/work/school/Robotics/FRC/logs/test.rlog"; // Pull the replay log from AdvantageScope (or prompt the user)
-		// 	Logger.getInstance().setReplaySource(new WPILOGReader(logPath)); // Read replay log
-		// 	Logger.getInstance().addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim"))); // Save outputs to a new log
-		// }
-
-// Logger.getInstance().disableDeterministicTimestamps() // See "Deterministic Timestamps" in the "Understanding Data Flow" page
 		// Logger.getInstance().start(); // Start logging! No more data receivers, replay sources, or metadata values may be added.
 
 		m_robotContainer = new RobotContainer();

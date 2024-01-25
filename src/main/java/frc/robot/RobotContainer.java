@@ -51,11 +51,13 @@ public class RobotContainer {
 		//changing modes between speeds
 		driverY.onTrue(new SequentialCommandGroup(new InstantCommand(()->RobotConstants.Swerve.maxSpeed=2), new InstantCommand(()->RobotConstants.Swerve.maxAngularVelocity=1.2)));
 		driverA.onTrue(new SequentialCommandGroup(new InstantCommand(()->RobotConstants.Swerve.maxSpeed=1), new InstantCommand(()->RobotConstants.Swerve.maxAngularVelocity=2.3)));
+		
+		zeroGyro.onTrue(new InstantCommand(swerve::zeroGyro));
+		// calibrate.onTrue(new SequentialCommandGroup(new InstantCommand(swerve::calibrateModules), new InstantCommand(arm::calibrate)));
+
 		//Arm Button Controls
 		// armA.onTrue(new InstantCommand(()->arm.setPos(RobotConstants.arm.ARM_Place_Low_Auto)));
  		// armY.onTrue(new InstantCommand(()->arm.setPos(RobotConstants.arm.ARM_Place_High_Auto)));
-		// zeroGyro.onTrue(new InstantCommand(swerve::zeroGyro));
-		// calibrate.onTrue(new SequentialCommandGroup(new InstantCommand(swerve::calibrateModules), new InstantCommand(arm::calibrate)));
 		// Five.onTrue(new InstantCommand(()->arm.activateIntake(true)));
 		// Six.onTrue(new InstantCommand(()->arm.activateIntake(false)));
 
